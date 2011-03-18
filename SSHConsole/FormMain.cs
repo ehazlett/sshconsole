@@ -1,0 +1,56 @@
+﻿/*
+Copyright 2011 Evan Hazlett
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+*/
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+
+namespace SSHConsole
+{
+    public partial class FormMain : Form
+    {
+        public FormMain()
+        {
+            InitializeComponent();
+        }
+
+        private void toolStripButtonNewSession_Click(object sender, EventArgs e)
+        {
+            FormConnect frmConn = new FormConnect(this);
+            frmConn.ShowDialog();
+        }
+
+        private void tabControlConsole_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == System.Windows.Forms.MouseButtons.Middle)
+            {
+                TabPage tp = this.tabControlConsole.SelectedTab;
+                this.tabControlConsole.TabPages.Remove(tp);
+            }
+        }
+
+        private void tabControlConsole_ControlAdded(object sender, ControlEventArgs e)
+        {
+            TabPage tp = this.tabControlConsole.SelectedTab;
+            tp.Controls[0].Focus();
+        }
+
+    }
+}

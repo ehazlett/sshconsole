@@ -1,0 +1,8 @@
+*.exe.*
+*.dll.*
+*.pdb
+*.swp
+SSHConsole/bin/*
+SSHConsole/obj/*
+TerminalControl/bin/*
+TerminalControl/obj/*
